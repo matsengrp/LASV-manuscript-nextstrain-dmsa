@@ -1,5 +1,5 @@
 {
-  "title": "Real-time tracking of Lassa virus evolution",
+  "title": "Lassa GPC phylogeny with estimated escape from the monoclonal antibodies mapped in Carr et al., 2024",
   "build_url": "https://github.com/matsengrp/lassa-dmsa",
   "colorings": [
     {
@@ -35,7 +35,7 @@
   ],
   "geo_resolutions": [
     "country",
-    "region"
+    "location"
   ],
   "display_defaults": {
     "map_triplicate": true,
@@ -44,7 +44,7 @@
   "filters": [
     "host",
     "country",
-    "region",
+    "location",
     "author"
   ]
 }

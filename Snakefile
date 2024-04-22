@@ -1,35 +1,7 @@
 
 # Initialize parameters
-SEGMENTS = ["S"]
-GENOME_SIZE_THRESHOLDS = [1000, 4000] # LASV S segment ~ 3kb and LASV L segment ~ 7kb
-MAX_FRAC_N = 0 # Maximum fraction of ambiuous bases allowed
-ACCESSIONS_TO_EXCLUDE = [
-    "MK107912", # this sequences is an outlier with many more bases that do not align
-    "MK281631", # this sequences has many 'X' amino acids
-    "MK118006", # this sequences has many 'X' and more bases that do not align
-    "MT193286", # this sequences has many 'X' and more bases that do not align
-    "MT193287", # this sequences has many 'X' and more bases that do not align
-    "K117948 ",# this sequences has many 'X' and more bases that do not align
-    "MK117981", # this sequences has many 'X' and more bases that do not align
-    "MK118036", # this sequences has many 'X' and more bases that do not align
-    "MK118037", # this sequences has many 'X' and more bases that do not align
-    "MH887756", # this sequences has many 'X' and more bases that do not align
-    "MH157039", # this sequences has many 'X' and more bases that do not align
-    "MH053490", # this sequences has many 'X' and more bases that do not align
-    "MK117951", # this sequences has many 'X' and more bases that do not align
-    "MK118005", # this sequences has many 'X' and more bases that do not align
-    "MK118034", # this sequences has many 'X' and more bases that do not align
-    "MK117850", # this sequences has many 'X' and more bases that do not align
-    "MK117954", # this sequences has many 'X' and more bases that do not align
-    "MK117977", # this sequences has many 'X' and more bases that do not align
-    "MK118013", # more of a borderline one b/c of 'X'
-    "MK118015", # this sequences has many 'X' and more bases that do not align
-    "MK118017", # this sequences has many 'X' and more bases that do not align
-    "MK118032", # this sequences has many 'X' and more bases that do not align
-    "MH053523", # this sequences has many 'X' and more bases that do not align
-    "MK118027", # more of a borderline one b/c has N bases instead of stop codon and adds trailing amino acids
-]
-DMS_WT_SEQ_ID = "Josiah_NC_004296_2018-08-13"
+SEGMENTS = ["GPC"]
+DMS_WT_SEQ_ID = "Josiah_NC_004296_reverse_complement_2018-08-13"
 
 
 rule all:
@@ -39,38 +11,34 @@ rule all:
 
 rule files:
     params:
-        accessions = "config/all_LASV_accessions_081023.txt", # List of accessions to download
-        reference = "config/LASV_S_reference_NC_004296_RC.gb", # Josiah reference
+        reference = "config/LASV_GPC_reference_NC_004296_RC.gb", # Josiah reference
         dropped_strains = "config/dropped_strains.txt",
         colors = "config/colors.tsv",
         auspice_config = "config/auspice_config.json",
-        allow_missing_sites = "allowed_missing_sites.txt"
+        allow_missing_sites = "allowed_missing_sites.txt",
+        raw_metadata = config["metadata"],
+        GPC_codon_sequences = config["GPC_codon_sequences"]
 
 files = rules.files.params
 
-rule download_data:
+rule patch_metadata_and_sequences:
     message:
         """
-        Processing the following accessions:
-          - {input.accessions}
+        Processing the raw metadata to match requirements of Nextstrain:
+          - {input.raw_metadata}
         """
     input:
-        accessions = files.accessions
-    params:
-        genome_size_threshold_lower = GENOME_SIZE_THRESHOLDS[0],
-        genome_size_threshold_upper = GENOME_SIZE_THRESHOLDS[1],
-        desired_segment = SEGMENTS[0],
-        max_frac_N = MAX_FRAC_N,
-        accesstions_to_exclude = ACCESSIONS_TO_EXCLUDE,
+        raw_metadata = files.raw_metadata,
+        raw_sequences = files.GPC_codon_sequences,
     output:
-        sequences = "results/unfiltered_{segment}.fasta",
         metadata = "results/{segment}_metadata.tsv",
+        sequences = "results/unfiltered_{segment}.fasta",
     conda: 
         "my_profiles/dmsa-pred/dmsa_env.yaml"
     log:
-        "logs/download_{segment}_data.txt"
+        "logs/patch_{segment}_metadata_and_sequences.txt"
     script:
-        "scripts/download_NCBI_sequences.py"
+        "scripts/patch_metadata_and_sequences.py"
 
 rule filter:
     message:
@@ -146,7 +114,6 @@ rule refine:
           - estimate timetree
           - use {params.coalescent} coalescent timescale
           - estimate {params.date_inference} node dates
-          - fix clock rate at {params.clock_rate}
         """
     input:
         tree = rules.tree.output.tree,
@@ -158,7 +125,6 @@ rule refine:
     params:
         coalescent = "opt",
         date_inference = "marginal",
-        clock_rate = 0.0006
     conda: 
         "my_profiles/dmsa-pred/dmsa_env.yaml"
     shell:
@@ -171,7 +137,6 @@ rule refine:
             --output-node-data {output.node_data} \
             --timetree \
             --coalescent {params.coalescent} \
-            --clock-rate {params.clock_rate} \
             --date-confidence \
             --date-inference {params.date_inference}
         """
@@ -204,7 +169,7 @@ rule translate:
         reference = files.reference
     output:
         node_data = "results/aa_muts_{segment}.json",
-        alignments = expand("results/translations/{{segment}}_{gene}.fasta", gene=["Glycoprotein", "Nucleoprotein"])
+        alignments = expand("results/translations/{{segment}}_{gene}.fasta", gene=["Glycoprotein"])
     conda: 
         "my_profiles/dmsa-pred/dmsa_env.yaml"
     log:
@@ -214,7 +179,7 @@ rule translate:
         """
         augur translate \
             --tree {input.tree} \
-            --genes Glycoprotein Nucleoprotein \
+            --genes Glycoprotein \
             --ancestral-sequences {input.node_data} \
             --reference-sequence {input.reference} \
             --output-node-data {output.node_data} \
@@ -225,7 +190,7 @@ rule translate:
 # additional 'segment' and 'gene' wildcards would need to be defined to make this more general
 rule variant_escape_prediction:
     input:
-        alignment = "results/translations/S_Glycoprotein.fasta"
+        alignment = "results/translations/GPC_Glycoprotein.fasta"
     output:
         node_data = "results/dmsa-phenotype/{collection}/{experiment}_escape_prediction.json",
         pred_data = "results/dmsa-phenotype/{collection}/{experiment}_escape_prediction.csv"

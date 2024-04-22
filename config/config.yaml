@@ -1,3 +1,6 @@
+# Path to metadata and sequences previously extracted in DMS repo
+metadata: "my_profiles/LASV_Josiah_GP_DMS/non-pipeline_analyses/LASV_phylogeny_analysis/Results/LASV_S_segment_metadata.tsv"
+GPC_codon_sequences: "my_profiles/LASV_Josiah_GP_DMS/non-pipeline_analyses/LASV_phylogeny_analysis/Results/LASV_GPC_codon.fasta"
 
 # DMSA phenotype prediction
 # dictionary of phenotype collections

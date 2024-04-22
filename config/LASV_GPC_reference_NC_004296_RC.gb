@@ -1,0 +1,74 @@
+LOCUS       XX_XXXXXX               1473 bp ss-RNA     linear   VRL 13-AUG-2018
+DEFINITION  MODIFIED NC_004296 only GPC sequence
+ACCESSION   XX_XXXXXX
+VERSION     XX_XXXXXX.1
+DBLINK      BioProject: PRJNA485481
+KEYWORDS    RefSeq.
+SOURCE      Mammarenavirus lassaense
+  ORGANISM  Mammarenavirus lassaense
+            Viruses; Riboviria; Orthornavirae; Negarnaviricota;
+            Polyploviricotina; Ellioviricetes; Bunyavirales; Arenaviridae;
+            Mammarenavirus.
+REFERENCE   1  (bases 1 to 1473)
+  AUTHORS   Auperin,D.D. and McCormick,J.B.
+  TITLE     Nucleotide sequence of the Lassa virus (Josiah strain) S genome RNA
+            and amino acid sequence comparison of the N and GPC proteins to
+            other arenaviruses
+  JOURNAL   Virology 168 (2), 421-425 (1989)
+   PUBMED   2916333
+REFERENCE   2  (bases 1 to 1473)
+  CONSRTM   NCBI Genome Project
+  TITLE     Direct Submission
+  JOURNAL   Submitted (28-SEP-2002) National Center for Biotechnology
+            Information, NIH, Bethesda, MD 20894, USA
+COMMENT     MODIFIED NC_004296
+FEATURES             Location/Qualifiers
+     source          1..1473
+                     /organism="Mammarenavirus lassaense"
+                     /mol_type="genomic RNA"
+                     /strain="Josiah"
+                     /segment="S"
+     gene            1..1473
+                     /locus_tag="Glycoprotein"
+                     /gene="GPC"
+     CDS             1..1473
+                     /locus_tag="Glycoprotein"
+                     /codon_start=1
+                     /product="glycoprotein"
+                     /translation="MGQIVTFFQEVPHVIEEVMNIVLIALSVLAVLKGLYNFATCGLV
+                     GLVTFLLLCGRSCTTSLYKGVYELQTLELNMETLNMTMPLSCTKNNSHHYIMVGNETG
+                     LELTLTNTSIINHKFCNLSDAHKKNLYDHALMSIISTFHLSIPNFNQYEAMSCDFNGG
+                     KISVQYNLSHSYAGDAANHCGTVANGVLQTFMRMAWGGSYIALDSGRGNWDCIMTSYQ
+                     YLIIQNTTWEDHCQFSRPSPIGYLGLLSQRTRDIYISRRLLGTFTWTLSDSEGKDTPG
+                     GYCLTRWMLIEAELKCFGNTAVAKCNEKHDEEFCDMLRLFDFNKQAIQRLKAEAQMSI
+                     QLINKAVNALINDQLIMKNHLRDIMGIPYCNYSKYWYLNHTTTGRTSLPKCWLVSNGS
+                     YLNETHFSDDIEQQADNMITEMLQKEYMERQGKTPLGLVDLFVFSTSFYLISIFLHLV
+                     KIPTHRHIVGKSCPKPHRLNHMGICSCGLYKQPGVPVKWKR"
+ORIGIN      
+        1 atgggacaaa tagtgacatt cttccaggaa gtgcctcatg taatagaaga ggtgatgaac
+       61 attgttctca ttgcactgtc tgtactagca gtgctgaaag gtctgtacaa ttttgcaacg
+      121 tgtggccttg ttggtttggt cactttcctc ctgttgtgtg gtaggtcttg cacaaccagt
+      181 ctttataaag gggtttatga gcttcagact ctggaactaa acatggagac actcaatatg
+      241 accatgcctc tctcctgcac aaagaacaac agtcatcatt atataatggt gggcaatgag
+      301 acaggactag aactgacctt gaccaacacg agcattatta atcacaaatt ttgcaatctg
+      361 tctgatgccc acaaaaagaa cctctatgac cacgctctta tgagcataat ctcaactttc
+      421 cacttgtcca tccccaactt caatcagtat gaggcaatga gctgcgattt taatggggga
+      481 aagattagtg tgcagtacaa cctgagtcac agctatgctg gggatgcagc caaccattgt
+      541 ggtactgttg caaatggtgt gttacagact tttatgagga tggcttgggg tgggagctac
+      601 attgctcttg actcaggccg tggcaactgg gactgtatta tgactagtta tcaatatctg
+      661 ataatccaaa atacaacctg ggaagatcac tgccaattct cgagaccatc tcccatcggt
+      721 tatctcgggc tcctctcaca aaggactaga gatatttata ttagtagaag attgctaggc
+      781 acattcacat ggacactgtc agattctgaa ggtaaagaca caccaggggg atattgtctg
+      841 accaggtgga tgctaattga ggctgaacta aaatgcttcg ggaacacagc tgtggcaaaa
+      901 tgtaatgaga agcatgatga ggaattttgt gacatgctga ggctgtttga cttcaacaaa
+      961 caagccattc aaaggttgaa agctgaagca caaatgagca ttcagttgat caacaaagca
+     1021 gtaaatgctt tgataaatga ccaacttata atgaagaacc atctacggga catcatggga
+     1081 attccatact gtaattacag caagtattgg tacctcaacc acacaactac tgggagaaca
+     1141 tcactgccca aatgttggct tgtatcaaat ggttcatact tgaacgagac ccacttttct
+     1201 gatgatattg aacaacaagc tgacaatatg atcactgaga tgttacagaa ggagtatatg
+     1261 gagaggcagg ggaagacacc attgggtcta gttgacctct ttgtgttcag tacaagtttc
+     1321 tatcttatta gcatcttcct tcacctagtc aaaataccaa ctcataggca tattgtaggc
+     1381 aagtcgtgtc ccaaacctca cagattgaat catatgggca tttgttcctg tggactctac
+     1441 aaacagcctg gtgtgcctgt gaaatggaag aga
+//
+
