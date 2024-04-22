@@ -1,0 +1,6 @@
+[submodule "my_profiles/dmsa-pred"]
+	path = my_profiles/dmsa-pred
+	url = https://github.com/matsengrp/dmsa-pred.git
+[submodule "my_profiles/LASV_Josiah_GP_DMS"]
+	path = my_profiles/LASV_Josiah_GP_DMS
+	url = https://github.com/dms-vep/LASV_Josiah_GP_DMS.git
