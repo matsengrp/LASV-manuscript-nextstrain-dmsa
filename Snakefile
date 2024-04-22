@@ -17,7 +17,8 @@ rule files:
         auspice_config = "config/auspice_config.json",
         allow_missing_sites = "allowed_missing_sites.txt",
         raw_metadata = config["metadata"],
-        GPC_codon_sequences = config["GPC_codon_sequences"]
+        GPC_codon_sequences = config["GPC_codon_sequences"],
+        description = "config/description.md"
 
 files = rules.files.params
 
@@ -266,23 +267,23 @@ def _get_variant_escape_node_data(wildcards):
     return inputs
 
 
-rule auspice_config:
-    message: "Getting auspice config for modification"
-    input:
-        default_auspice_config = files.auspice_config
-    output:
-        "results/dmsa_modified_auspice_config.json"
-    params:
-        path_config = workflow.overwrite_configfiles[0]
-    conda:
-        "my_profiles/dmsa-pred/dmsa_env.yaml"
-    shell:
-        """
-        python my_profiles/dmsa-pred/modify_auspice_config.py \
-            --auspice-config-path {input.default_auspice_config} \
-            --snake-config-path {params.path_config} \
-            --output-config-path {output}
-        """
+#rule auspice_config:
+#    message: "Getting auspice config for modification"
+#    input:
+#        default_auspice_config = files.auspice_config
+#    output:
+#        "results/dmsa_modified_auspice_config.json"
+#    params:
+#        path_config = workflow.overwrite_configfiles[0]
+#    conda:
+#        "my_profiles/dmsa-pred/dmsa_env.yaml"
+#    shell:
+#        """
+#        python my_profiles/dmsa-pred/modify_auspice_config.py \
+#            --auspice-config-path {input.default_auspice_config} \
+#            --snake-config-path {params.path_config} \
+#            --output-config-path {output}
+#        """
 
 rule export:
     message: "Exporting data files for for auspice"
@@ -295,7 +296,8 @@ rule export:
         nt_muts = rules.ancestral.output.node_data,
         aa_muts = rules.translate.output.node_data,
         colors = files.colors,
-        auspice_config = files.auspice_config
+        auspice_config = files.auspice_config,
+        description = files.description
     output:
         auspice_json = "auspice/lassa-{segment}.json",
         root_sequence_json = "auspice/lassa-{segment}_root-sequence.json" 
@@ -312,5 +314,6 @@ rule export:
             --include-root-sequence \
             --colors {input.colors} \
             --auspice-config {input.auspice_config} \
+            --description {input.description} \
             --output {output.auspice_json} 2>&1 | tee {log}
         """

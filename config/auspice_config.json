@@ -1,6 +1,16 @@
 {
   "title": "Lassa GPC phylogeny with estimated escape from the monoclonal antibodies mapped in Carr et al., 2024",
-  "build_url": "https://github.com/matsengrp/lassa-dmsa",
+  "build_url": "https://github.com/matsengrp/LASV-manuscript-nextstrain-dmsa",
+  "maintainers": [
+    {
+      "name": "the Matsen group",
+      "url": "https://matsen.fredhutch.org/"
+    },
+    {
+      "name": "the Bloom lab",
+      "url": "https://research.fredhutch.org/bloom/en.html"
+    }
+  ],
   "colorings": [
     {
       "key": "host",
