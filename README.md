@@ -1,8 +1,12 @@
-# nextstrain.org/lassa dmsa_pred build
+# LASV manuscript repo for nextstrain w/ `dmsa_pred`
+
+This repository contains a nexstrain build for the Lassa Virus, 
+modified from the core [nextstrain.org/lassa](https://nextstrain.org/lassa) 
+to include the analysis of deep mutational scanning data. 
+The analysis is performed using the [dmsa_pred](https://github.com/matsengrp/dmsa_pred) package. 
+This repo is currently set up to run the data as presented in the manuscript [Deep mutational scanning reveals functional constraints and antigenic variability of Lassa virus glycoprotein complex](https://www.biorxiv.org/content/10.1101/2024.02.05.579020v1).
 
 For those unfamiliar with Nextstrain, we recommend checking out the [Nextstrain documentation](https://docs.nextstrain.org/en/latest/) before reading further.
-
-This repository contains a nexstrain build for the Lassa Virus, modified from the core [nextstrain.org/lassa](https://nextstrain.org/lassa) to include the analysis of deep mutational scanning data. The analysis is performed using the [dmsa_pred](https://github.com/matsengrp/dmsa_pred) package. This repo is currently set up to run the data as presented in the manuscript [Deep mutational scanning reveals functional constraints and antigenic variability of Lassa virus glycoprotein complex](https://www.biorxiv.org/content/10.1101/2024.02.05.579020v1).
 
 To run the pipeline, 
 install snakemake following their 
