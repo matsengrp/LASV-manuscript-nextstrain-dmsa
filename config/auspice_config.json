@@ -13,6 +13,96 @@
   ],
   "colorings": [
     {
+      "key": "2510C_filtered_mut_effect.csv",
+      "title": "antibody 25.10C escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          8.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
+      "key": "121F_filtered_mut_effect.csv",
+      "title": "antibody 12.1F escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          6.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
+      "key": "377H_filtered_mut_effect.csv",
+      "title": "antibody 37.7H escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          8.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
+      "key": "256A_filtered_mut_effect.csv",
+      "title": "antibody 25.6A escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          5.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
+      "key": "372D_filtered_mut_effect.csv",
+      "title": "antibody 37.2D escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          4.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
+      "key": "89F_filtered_mut_effect.csv",
+      "title": "antibody 8.9F escape",
+      "type": "continuous",
+      "scale": [
+        [
+          0.0,
+          "#DDDDDD"
+        ],
+        [
+          6.0,
+          "#D7191C"
+        ]
+      ]
+    },
+    {
       "key": "host",
       "title": "host",
       "type": "categorical"

@@ -1,0 +1,1 @@
+Lassa virus GPC with predicted antibody escape scores mapped onto the tree. This build uses sequences and escape measurements as presented in our manuscript [Deep mutational scanning reveals functional constraints and antigenic variability of Lassa virus glycoprotein complex](https://www.biorxiv.org/content/10.1101/2024.02.05.579020v1).
